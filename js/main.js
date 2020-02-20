@@ -46,7 +46,8 @@ $(function() {
       qs: {}
     },
     {
-      name: "Wine"
+      name: "Wine",
+      qs: {}
     }
   ];
 

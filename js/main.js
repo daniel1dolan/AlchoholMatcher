@@ -76,4 +76,29 @@ $(function() {
       >`);
     }
   };
+
+  let Non_Alcoholic = () => {
+    let drinksforall = [];
+
+    fetch(
+      `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic`
+    )
+      .then(response => {
+        return response.json();
+      })
+      .then(drinkArray => {
+        console.log(drinkArray);
+        drinksforall = [...drinksforall, ...drinkArray.drinks];
+      })
+      .then(() => {
+        let drinkslist = drinksforall.map(array => {
+          //   let drinkMulti = array.strDrink.join("-");
+          //   console.log(drinkMulti);
+          return `<li>${array.strDrink}<a href="https://www.thecocktaildb.com/drink/${array.idDrink}-${array.strDrink}">Drink Information</a><img width="300px" src=${array.strDrinkThumb}></li>`;
+        });
+        console.log(drinkslist);
+        let drinknow = document.querySelector("#results");
+        drinknow.innerHTML = drinkslist.join("");
+      });
+  };
 });

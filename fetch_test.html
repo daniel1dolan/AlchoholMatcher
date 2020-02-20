@@ -1,38 +1,47 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <title>Test</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
   </head>
   <body>
-    <input type="button" id="beer_search" value="Search Beer Darkness" />
-    <div id="display"></div>
+    <div id="results"></div>
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
       crossorigin="anonymous"
     ></script>
     <script>
-      $(document).ready(function() {
-        $("#beer_search").click(function() {
-          $.get(
-            "http://www.thebeerspot.com/api/search",
-            {
-              function: "beer",
-              dev_key: "3aa9093ae1140f48f89c47dd932f85d9",
-              search_term: "darkness",
-              limit: "5"
-            },
-            function(response) {
-              $.each(response, function() {
-                $.each(this, function(name, value) {
-                  // add each item to a div on the page
-                  $("#display").append(name + " : " + value + "<br />");
-                });
-                // throw a line break at the end of each item
-                $("#display").append("<br />");
+
+      $(() => {
+        let Non_Alcoholic = () => {
+          let drinksforall = [];
+
+          fetch(
+            `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic`
+          )
+            .then(response => {
+              return response.json();
+            })
+            .then(drinkArray => {
+              console.log(drinkArray);
+              drinksforall = [...drinksforall, ...drinkArray.drinks];
+            })
+            .then(() => {
+              let drinkslist = drinksforall.map(array => {
+                //   let drinkMulti = array.strDrink.join("-");
+                //   console.log(drinkMulti);
+                return `<li>${array.strDrink}<a href="https://www.thecocktaildb.com/drink/${array.idDrink}-${array.strDrink}">Drink Information</a><img width="300px" src=${array.strDrinkThumb}></li>`;
               });
-            }
-          );
-        });
+              console.log(drinkslist);
+              let drinknow = document.querySelector("#results");
+              drinknow.innerHTML = drinkslist.join("");
+            });
+        };
+        Non_Alcoholic();
+
       });
     </script>
   </body>

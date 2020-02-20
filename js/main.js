@@ -29,13 +29,44 @@ $(function() {
     else return "CORRECT";
   };
 
+  let questions = [
+    {
+      name: "Cocktails",
+      qs: {
+        length: 7,
+        heading: "What type of liquor would you prefer?",
+        q1: "Gin",
+        q2: "Vodka",
+        q3: "Rum",
+        q4: "Whiskey",
+        q5: "Tequila",
+        q6: "Brandy",
+        q7: "Random"
+      }
+    },
+    {
+      name: "Beer",
+      qs: {}
+    },
+    {
+      name: "Wine"
+    }
+  ];
+
   let nextQ = Qans => {
     let qNum = $("#qid");
     qNum.text += 1;
     $("#heading").text(Qans["heading"]);
-    $("#q1").text(Qans["q1"]);
-    $("#q2").text(Qans["q2"]);
-    $("#q3").text(Qans["q3"]);
-    $("#q4").text(Qans["q4"]);
+    let quiz = $("#quiz");
+    for (let i = 1; i < Qans[length]; i++) {
+      quiz.append(`<label
+        id="q${i}"
+        class="element-animation1 btn btn-lg btn-primary btn-block"
+        ><span class="btn-label"
+          ><i class="glyphicon glyphicon-chevron-right"></i
+        ></span>
+        <input type="radio" name="q_answer" value="${i}" />${Qans[i]}</label
+      >`);
+    }
   };
 });

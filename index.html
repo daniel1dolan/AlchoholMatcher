@@ -1,35 +1,111 @@
 <html>
   <head>
-    <title>Test</title>
-    <script type="text/javascript" src="jquery.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function() {
-        $("#beer_search").click(function() {
-          $.post(
-            "http://www.thebeerspot.com/api/search",
-            {
-              function: "beer",
-              dev_key: "DEV_API_KEY",
-              search_term: "darkness",
-              limit: "5"
-            },
-            function(response) {
-              $.each(response, function() {
-                $.each(this, function(name, value) {
-                  // add each item to a div on the page
-                  $("#display").append(name + " : " + value + "<br />");
-                });
-                // throw a line break at the end of each item
-                $("#display").append("<br />");
-              });
-            }
-          );
-        });
-      });
-    </script>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <input type="button" id="beer_search" value="Search Beer Darkness" />
-    <div id="display"></div>
+    <div class="container-fluid bg-info">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 id="heading">
+              <span class="label label-warning" id="qid">1</span> What sort of
+              libation are you looking for?
+            </h3>
+          </div>
+          <div class="modal-body">
+            <div class="col-xs-3 col-xs-offset-5">
+              <div id="loadbar" style="display: none;">
+                <div class="blockG" id="rotateG_01"></div>
+                <div class="blockG" id="rotateG_02"></div>
+                <div class="blockG" id="rotateG_03"></div>
+                <div class="blockG" id="rotateG_04"></div>
+                <div class="blockG" id="rotateG_05"></div>
+                <div class="blockG" id="rotateG_06"></div>
+                <div class="blockG" id="rotateG_07"></div>
+                <div class="blockG" id="rotateG_08"></div>
+              </div>
+            </div>
+
+            <div class="quiz" id="quiz" data-toggle="buttons">
+              <label
+                id="q1"
+                class="element-animation1 btn btn-lg btn-primary btn-block"
+                ><span class="btn-label"
+                  ><i class="glyphicon glyphicon-chevron-right"></i
+                ></span>
+                <input type="radio" name="q_answer" value="1" />Beer</label
+              >
+              <label
+                id="q2"
+                class="element-animation2 btn btn-lg btn-primary btn-block"
+                ><span class="btn-label"
+                  ><i class="glyphicon glyphicon-chevron-right"></i
+                ></span>
+                <input type="radio" name="q_answer" value="2" />Wine</label
+              >
+              <label
+                id="q3"
+                class="element-animation3 btn btn-lg btn-primary btn-block"
+                ><span class="btn-label"
+                  ><i class="glyphicon glyphicon-chevron-right"></i
+                ></span>
+                <input type="radio" name="q_answer" value="3" />Cocktail</label
+              >
+              <label
+                id="q4"
+                class="element-animation4 btn btn-lg btn-primary btn-block"
+                ><span class="btn-label"
+                  ><i class="glyphicon glyphicon-chevron-right"></i
+                ></span>
+                <input type="radio" name="q_answer" value="4" />Surprise
+                me!</label
+              >
+            </div>
+          </div>
+          <div class="modal-footer text-muted">
+            <span id="answer"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/main.js"></script>
   </body>
 </html>

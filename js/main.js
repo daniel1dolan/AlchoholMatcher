@@ -58,7 +58,7 @@ $(function() {
 
   let nextQ = Qans => {
     // let qNum = $("#qid");
-    // qNum.text();
+    // qNum.text() = qNum.text().parseint() + 1;
     // console.log(qNum.text);
     $("#heading").text(Qans["qs"]["heading"]);
     let quiz = $("#quiz");

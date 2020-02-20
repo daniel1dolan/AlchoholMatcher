@@ -12,6 +12,7 @@ $(function() {
     var choice = $(this)
       .find("input:radio")
       .val();
+    console.log(choice);
     $("#loadbar").show();
     $("#quiz").fadeOut();
     setTimeout(function() {
@@ -20,14 +21,10 @@ $(function() {
       $("#loadbar").fadeOut();
       /* something else */
     }, 1500);
+    nextQ(questions[0]);
   });
 
   $ans = 3;
-
-  $.fn.checking = function(ck) {
-    if (ck != $ans) return "INCORRECT";
-    else return "CORRECT";
-  };
 
   let questions = [
     {
@@ -35,13 +32,13 @@ $(function() {
       qs: {
         length: 7,
         heading: "What type of liquor would you prefer?",
-        q1: "Gin",
-        q2: "Vodka",
-        q3: "Rum",
-        q4: "Whiskey",
-        q5: "Tequila",
-        q6: "Brandy",
-        q7: "Random"
+        1: "Gin",
+        2: "Vodka",
+        3: "Rum",
+        4: "Whiskey",
+        5: "Tequila",
+        6: "Brandy",
+        7: "Random"
       }
     },
     {
@@ -53,19 +50,28 @@ $(function() {
     }
   ];
 
+  $.fn.checking = function(ck) {
+    console.log(questions[0]["qs"]);
+    return questions[0];
+  };
+
   let nextQ = Qans => {
-    let qNum = $("#qid");
-    qNum.text += 1;
-    $("#heading").text(Qans["heading"]);
+    // let qNum = $("#qid");
+    // qNum.text();
+    // console.log(qNum.text);
+    $("#heading").text(Qans["qs"]["heading"]);
     let quiz = $("#quiz");
-    for (let i = 1; i < Qans[length]; i++) {
+    console.log(quiz);
+    quiz.empty();
+    console.log(Qans);
+    for (let i = 1; i <= Qans["qs"]["length"]; i++) {
       quiz.append(`<label
         id="q${i}"
         class="element-animation1 btn btn-lg btn-primary btn-block"
         ><span class="btn-label"
           ><i class="glyphicon glyphicon-chevron-right"></i
         ></span>
-        <input type="radio" name="q_answer" value="${i}" />${Qans[i]}</label
+        <input type="radio" name="q_answer" value="${i}" />${Qans["qs"][i]}</label
       >`);
     }
   };

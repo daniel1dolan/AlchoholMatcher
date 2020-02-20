@@ -1,5 +1,6 @@
 $(function() {
   var loading = $("#loadbar").hide();
+  let qCount = 0;
   $(document)
     .ajaxStart(function() {
       loading.show();
@@ -8,7 +9,7 @@ $(function() {
       loading.hide();
     });
 
-  $("label.btn").on("click", function() {
+  let btnIns = $("label.btn").on("click", function() {
     var choice = $(this)
       .find("input:radio")
       .val();
@@ -21,12 +22,22 @@ $(function() {
       $("#loadbar").fadeOut();
       /* something else */
     }, 1500);
-    nextQ(questions[0]);
+    nextQ(choice);
   });
 
-  $ans = 3;
-
   let questions = [
+    {
+      name: "Aged",
+      qs: {
+        length: 4,
+        heading: "What sort of libation are you looking for?",
+        1: "Beer",
+        2: "Wine",
+        3: "Cocktail",
+        4: "Suprise me!"
+      },
+      next: "question[1]"
+    },
     {
       name: "Cocktails",
       qs: {
@@ -50,6 +61,24 @@ $(function() {
       qs: {}
     }
   ];
+
+  $("label.btn").on("click", function() {
+    var choice = $(this)
+      .find("input:radio")
+      .val();
+    console.log(choice);
+    $("#loadbar").show();
+    $("#quiz").fadeOut();
+    setTimeout(function() {
+      $("#answer").html($(this).checking(choice));
+      $("#quiz").show();
+      $("#loadbar").fadeOut();
+      /* something else */
+    }, 1500);
+    nextQ(questions[0]);
+  });
+
+  $ans = 3;
 
   $.fn.checking = function(ck) {
     console.log(questions[0]["qs"]);
@@ -75,6 +104,7 @@ $(function() {
         <input type="radio" name="q_answer" value="${i}" />${Qans["qs"][i]}</label
       >`);
     }
+    Qans["button"];
   };
 
   let Non_Alcoholic = () => {

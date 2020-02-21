@@ -9,21 +9,15 @@ $(function() {
       loading.hide();
     });
 
-  let btnIns = $("label.btn").on("click", function() {
-    var choice = $(this)
-      .find("input:radio")
-      .val();
-    console.log(choice);
-    $("#loadbar").show();
-    $("#quiz").fadeOut();
-    setTimeout(function() {
-      $("#answer").html($(this).checking(choice));
-      $("#quiz").show();
-      $("#loadbar").fadeOut();
-      /* something else */
-    }, 1500);
-    nextQ(choice);
-  });
+  class QTaker {
+    constructor(drinkTree, innerTree) {
+      this.age = false;
+      this.drinkTree = drinkTree;
+      this.innerTree = innerTree;
+    }
+  }
+
+  const qBase = new QTaker(0, 0);
 
   let questions = [
     {
@@ -39,6 +33,14 @@ $(function() {
       next: "question[1]"
     },
     {
+      name: "Beer",
+      qs: {}
+    },
+    {
+      name: "Wine",
+      qs: {}
+    },
+    {
       name: "Cocktails",
       qs: {
         length: 7,
@@ -51,14 +53,6 @@ $(function() {
         6: "Brandy",
         7: "Random"
       }
-    },
-    {
-      name: "Beer",
-      qs: {}
-    },
-    {
-      name: "Wine",
-      qs: {}
     }
   ];
 
@@ -75,14 +69,20 @@ $(function() {
       $("#loadbar").fadeOut();
       /* something else */
     }, 1500);
+    qBase.Age = choice;
+    // if (choice != true){
+    //   Non_Alcoholic()
+    // }
     nextQ(questions[0]);
   });
 
   $ans = 3;
 
-  $.fn.checking = function(ck) {
-    console.log(questions[0]["qs"]);
-    return questions[0];
+  $.fn.checking = function() {
+    console.log(qBase);
+    // if (qBase.innerTree > 0){
+    //fetch request
+    // }
   };
 
   let nextQ = Qans => {
@@ -104,7 +104,41 @@ $(function() {
         <input type="radio" name="q_answer" value="${i}" />${Qans["qs"][i]}</label
       >`);
     }
-    Qans["button"];
+    if (qBase.drinkTree < 1) {
+      $("label.btn").on("click", function() {
+        var choice = $(this)
+          .find("input:radio")
+          .val();
+        console.log(choice);
+        $("#loadbar").show();
+        $("#quiz").fadeOut();
+        setTimeout(function() {
+          $("#answer").html($(this).checking(choice));
+          $("#quiz").show();
+          $("#loadbar").fadeOut();
+          /* something else */
+        }, 1500);
+        qBase.drinkTree = choice;
+        nextQ(questions[qBase.drinkTree]);
+      });
+    } else {
+      $("label.btn").on("click", function() {
+        var choice = $(this)
+          .find("input:radio")
+          .val();
+        console.log(choice);
+        $("#loadbar").show();
+        $("#quiz").fadeOut();
+        setTimeout(function() {
+          $("#answer").html($(this).checking(choice));
+          $("#quiz").show();
+          $("#loadbar").fadeOut();
+          /* something else */
+        }, 1500);
+        qBase.innerTree = choice;
+        console.log("Yas");
+      });
+    }
   };
 
   let Non_Alcoholic = () => {

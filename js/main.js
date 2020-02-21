@@ -195,7 +195,7 @@ $(function() {
         let drinkslist = drinksforall.map(array => {
           //   let drinkMulti = array.strDrink.join("-");
           //   console.log(drinkMulti);
-          return `<div class="col">${array.strDrink}<br><img width="200px" src=${array.strDrinkThumb}><br><a href="https://www.thecocktaildb.com/drink/${array.idDrink}-${array.strDrink}">Drink Information</a></div>`;
+          return `<div class="col"><a href="https://www.thecocktaildb.com/drink/${array.idDrink}-${array.strDrink}">${array.strDrink}</a><br><img width="200px" src=${array.strDrinkThumb}><br></div>`;
         });
         console.log(drinkslist);
         let drinknow = document.querySelector("#results-row");

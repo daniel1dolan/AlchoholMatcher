@@ -14,12 +14,27 @@ $(function() {
       this.drinkTree = drinkTree;
       this.innerTree = innerTree;
     }
-    // finCheck() {
-    //   if (this.innerTree > 0) {
-    // do fetch
-    //   }
-    // }
+    finCheck() {
+      if (this.innerTree > 0) {
+        let fetchParam = questions[this.drinkTree][this.innerTree];
+        switch (this.drinkTree) {
+          case 1:
+            `beerAPI${fetchParam}`;
+          case 2:
+            `WineAPI${fetchParam}`;
+          case 3:
+            `CocktailAPI${fetchParam}`;
+          case 4:
+        }
+      }
+    }
   }
+
+  let randomNum = () => {
+    console.log(Math.ceil(Math.random() * 3));
+  };
+
+  randomNum();
 
   const qBase = new QTaker(0, 0);
 
@@ -39,12 +54,14 @@ $(function() {
     {
       name: "Beer",
       qs: {
-        length: 4,
-        heading: "What type of beer would you like?",
-        1: "1",
-        2: "2",
-        3: "3",
-        4: "4"
+        length: 5,
+        heading:
+          "What type of food would you like your beer to pair well with?",
+        1: "American",
+        2: "Mexican",
+        3: "Asian",
+        4: "Italian",
+        5: "Random"
       }
     },
     {
@@ -154,6 +171,7 @@ $(function() {
           /* something else */
         }, 1500);
         qBase.innerTree = choice;
+        qBase.finCheck();
       });
     }
   };

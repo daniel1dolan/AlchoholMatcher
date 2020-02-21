@@ -15,16 +15,38 @@ $(function() {
       this.innerTree = innerTree;
     }
     finCheck() {
-      if (this.innerTree > 0) {
-        let fetchParam = questions[this.drinkTree][this.innerTree];
+      console.log("finwork");
+      if (parseInt(this.innerTree) > 0) {
+        let fetchParam = questions[this.drinkTree]["qs"][this.innerTree];
+        console.log(fetchParam);
         switch (this.drinkTree) {
-          case 1:
+          case "1":
             `beerAPI${fetchParam}`;
-          case 2:
+            let drinksforall = [];
+
+            fetch(`https://api.punkapi.com/v2/beers?food=${fetchParam}`)
+              .then(response => {
+                return response.json();
+              })
+              .then(drinkArray => {
+                console.log(drinkArray);
+                drinksforall = [...drinksforall, ...drinkArray];
+              })
+              .then(() => {
+                let drinkslist = drinksforall.map(array => {
+                  //   let drinkMulti = array.strDrink.join("-");
+                  //   console.log(drinkMulti);
+                  return `<div class="col">${array.tagline}<br><img width="200px" src=${array.image_url}><br></div>`;
+                });
+                console.log(drinkslist);
+                let drinknow = document.querySelector("#results-row");
+                drinknow.innerHTML = drinkslist.join("");
+              });
+          case "2":
             `WineAPI${fetchParam}`;
-          case 3:
+          case "3":
             `CocktailAPI${fetchParam}`;
-          case 4:
+          case "4":
         }
       }
     }
@@ -163,7 +185,7 @@ $(function() {
         var choice = $(this)
           .find("input:radio")
           .val();
-        console.log(choice);
+        console.log("the choice:", choice);
         $("#loadbar").show();
         $("#quiz").fadeOut();
         setTimeout(function() {

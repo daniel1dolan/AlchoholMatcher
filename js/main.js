@@ -15,16 +15,58 @@ $(function() {
       this.innerTree = innerTree;
     }
     finCheck() {
-      if (this.innerTree > 0) {
-        let fetchParam = questions[this.drinkTree][this.innerTree];
+      console.log("finwork");
+      if (parseInt(this.innerTree) > 0) {
+        let fetchParam = questions[this.drinkTree]["qs"][this.innerTree];
+        console.log(fetchParam);
         switch (this.drinkTree) {
-          case 1:
-            `beerAPI${fetchParam}`;
-          case 2:
+          case "1":
+          //Beer API
+            let drinksforall = [];
+
+            fetch(`https://api.punkapi.com/v2/beers?food=${fetchParam}`)
+              .then(response => {
+                return response.json();
+              })
+              .then(drinkArray => {
+                console.log(drinkArray);
+                drinksforall = [...drinksforall, ...drinkArray];
+              })
+              .then(() => {
+                let drinkslist = drinksforall.map(array => {
+                  //   let drinkMulti = array.strDrink.join("-");
+                  //   console.log(drinkMulti);
+                  return `<div class="col">${array.tagline}<br><img width="200px" src=${array.image_url}><br></div>`;
+                });
+                console.log(drinkslist);
+                let drinknow = document.querySelector("#results-row");
+                drinknow.innerHTML = drinkslist.join("");
+              });
+          case "2":
+        //Wine API
             `WineAPI${fetchParam}`;
-          case 3:
-            `CocktailAPI${fetchParam}`;
-          case 4:
+          case "3":
+        // Liquor API
+            let drinksforall = [];
+            fetch(
+              `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${fetchParam}`
+            )
+              .then(response => {
+                return response.json();
+              })
+              .then(drinkArray => {
+                console.log(drinkArray);
+                drinksforall = [...drinksforall, ...drinkArray.drinks];
+              })
+              .then(() => {
+                let drinkslist = drinksforall.map(array => {
+                  console.log(drinksforall);
+                  return `<div class="col"><a href="https://www.thecocktaildb.com/drink/${array.idDrink}-${array.strDrink}">${array.strDrink}</a><br><img width="200px" src=${array.strDrinkThumb}><br></div>`;
+                });
+                console.log(drinkslist);
+                let drinknow = document.querySelector("#results-row");
+                drinknow.innerHTML = drinkslist.join("");
+          case "4":
         }
       }
     }
@@ -105,7 +147,7 @@ $(function() {
       /* something else */
     }, 1500);
     qBase.Age = choice;
-    if (choice != true) {
+    if (choice == "false") {
       Non_Alcoholic();
       $("#quiz").hide();
     } else {
@@ -163,7 +205,7 @@ $(function() {
         var choice = $(this)
           .find("input:radio")
           .val();
-        console.log(choice);
+        console.log("the choice:", choice);
         $("#loadbar").show();
         $("#quiz").fadeOut();
         setTimeout(function() {

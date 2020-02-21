@@ -1,6 +1,5 @@
 $(function() {
   var loading = $("#loadbar").hide();
-  let qCount = 0;
   $(document)
     .ajaxStart(function() {
       loading.show();
@@ -15,6 +14,11 @@ $(function() {
       this.drinkTree = drinkTree;
       this.innerTree = innerTree;
     }
+    // finCheck() {
+    //   if (this.innerTree > 0) {
+    // do fetch
+    //   }
+    // }
   }
 
   const qBase = new QTaker(0, 0);
@@ -34,11 +38,25 @@ $(function() {
     },
     {
       name: "Beer",
-      qs: {}
+      qs: {
+        length: 4,
+        heading: "What type of beer would you like?",
+        1: "1",
+        2: "2",
+        3: "3",
+        4: "4"
+      }
     },
     {
       name: "Wine",
-      qs: {}
+      qs: {
+        length: 4,
+        heading: "What color of wine would you like a recommendation for?",
+        1: "1",
+        2: "2",
+        3: "3",
+        4: "4"
+      }
     },
     {
       name: "Cocktails",
@@ -136,7 +154,6 @@ $(function() {
           /* something else */
         }, 1500);
         qBase.innerTree = choice;
-        console.log("Yas");
       });
     }
   };

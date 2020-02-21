@@ -18,13 +18,36 @@ $(function() {
       if (this.innerTree > 0) {
         let fetchParam = questions[this.drinkTree][this.innerTree];
         switch (this.drinkTree) {
-          case 1:
+          case "1":
+            // Beer API
             `beerAPI${fetchParam}`;
-          case 2:
+          case "2":
+            // Wine API
             `WineAPI${fetchParam}`;
-          case 3:
-            `CocktailAPI${fetchParam}`;
-          case 4:
+          case "3":
+            // Liquor API
+            let drinksforall = [];
+            fetch(
+              `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${fetchParam}`
+            )
+              .then(response => {
+                return response.json();
+              })
+              .then(drinkArray => {
+                console.log(drinkArray);
+                drinksforall = [...drinksforall, ...drinkArray.drinks];
+              })
+              .then(() => {
+                let drinkslist = drinksforall.map(array => {
+                  console.log(drinksforall);
+                  return `<div class="col"><a href="https://www.thecocktaildb.com/drink/${array.idDrink}-${array.strDrink}">${array.strDrink}</a><br><img width="200px" src=${array.strDrinkThumb}><br></div>`;
+                });
+                console.log(drinkslist);
+                let drinknow = document.querySelector("#results-row");
+                drinknow.innerHTML = drinkslist.join("");
+              });
+          case "4":
+          // Random Call
         }
       }
     }

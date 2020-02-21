@@ -45,6 +45,19 @@ $(function() {
           case "2":
             //Wine API
             `WineAPI${fetchParam}`;
+
+            fetch(
+              `https://api.spoonacular.com/food/wine/pairing?apiKey=8c68b07724d1450abd164de9a4455132&food=${fetchParam}`
+            )
+              .then(response => {
+                return response.json();
+              })
+              .then(array => {
+                let newDis = `<div class="col">${array.pairingText}<br><img width="200px" src=${array.productMatches[0].imageUrl}><br></div>`;
+                console.log(newDis);
+                let drinknow = document.querySelector("#results-row");
+                drinknow.innerHTML = newDis;
+              });
           case "3":
             // Liquor API
             let drinksforLiquor = [];
@@ -110,12 +123,16 @@ $(function() {
     {
       name: "Wine",
       qs: {
-        length: 4,
-        heading: "What color of wine would you like a recommendation for?",
-        1: "1",
-        2: "2",
-        3: "3",
-        4: "4"
+        length: 7,
+        heading:
+          "What type of food would you like your wine to pair well with?",
+        1: "French",
+        2: "Mexican",
+        3: "Asian",
+        4: "Italian",
+        5: "Spanish",
+        6: "Argentinian",
+        7: "Random"
       }
     },
     {

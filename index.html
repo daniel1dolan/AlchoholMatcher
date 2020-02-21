@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <title>Title</title>
     <!-- Required meta tags -->
@@ -10,6 +9,14 @@
     />
 
     <!-- Bootstrap CSS -->
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -23,9 +30,9 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h3>
-              <span class="label label-warning" id="qid">2</span> THREE is
-              CORRECT
+            <h3 id="heading">
+              <span class="label label-warning" id="qid">1</span> Are you over
+              21?
             </h3>
           </div>
           <div class="modal-body">
@@ -43,29 +50,21 @@
             </div>
 
             <div class="quiz" id="quiz" data-toggle="buttons">
-              <label class="element-animation1 btn btn-lg btn-primary btn-block"
+              <label
+                id="q1"
+                class="element-animation1 btn btn-lg btn-primary btn-block"
                 ><span class="btn-label"
                   ><i class="glyphicon glyphicon-chevron-right"></i
                 ></span>
-                <input type="radio" name="q_answer" value="1" />1 One</label
+                <input type="radio" name="q_answer" value="1" />Yes.</label
               >
-              <label class="element-animation2 btn btn-lg btn-primary btn-block"
+              <label
+                id="q2"
+                class="element-animation2 btn btn-lg btn-primary btn-block"
                 ><span class="btn-label"
                   ><i class="glyphicon glyphicon-chevron-right"></i
                 ></span>
-                <input type="radio" name="q_answer" value="2" />2 Two</label
-              >
-              <label class="element-animation3 btn btn-lg btn-primary btn-block"
-                ><span class="btn-label"
-                  ><i class="glyphicon glyphicon-chevron-right"></i
-                ></span>
-                <input type="radio" name="q_answer" value="3" />3 Three</label
-              >
-              <label class="element-animation4 btn btn-lg btn-primary btn-block"
-                ><span class="btn-label"
-                  ><i class="glyphicon glyphicon-chevron-right"></i
-                ></span>
-                <input type="radio" name="q_answer" value="4" />4 Four</label
+                <input type="radio" name="q_answer" value="2" />No.</label
               >
             </div>
           </div>
@@ -76,8 +75,8 @@
       </div>
     </div>
     <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
       crossorigin="anonymous"
     ></script>
     <script

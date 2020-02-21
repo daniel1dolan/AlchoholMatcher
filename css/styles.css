@@ -1,3 +1,11 @@
+#navHome {
+  background-color: purple;
+}
+
+#navText {
+  text-size-adjust: large;
+}
+
 #qid {
   padding: 10px 15px;
   -moz-border-radius: 50px;

@@ -105,10 +105,12 @@ $(function() {
       /* something else */
     }, 1500);
     qBase.Age = choice;
-    // if (choice != true){
-    //   Non_Alcoholic()
-    // }
-    nextQ(questions[0]);
+    if (choice != true) {
+      Non_Alcoholic();
+      $("#quiz").hide();
+    } else {
+      nextQ(questions[0]);
+    }
   });
 
   $ans = 3;
@@ -193,10 +195,10 @@ $(function() {
         let drinkslist = drinksforall.map(array => {
           //   let drinkMulti = array.strDrink.join("-");
           //   console.log(drinkMulti);
-          return `<li>${array.strDrink}<br><img width="300px" src=${array.strDrinkThumb}><br><a href="https://www.thecocktaildb.com/drink/${array.idDrink}-${array.strDrink}">Drink Information</a></li>`;
+          return `<div class="col">${array.strDrink}<br><img width="200px" src=${array.strDrinkThumb}><br><a href="https://www.thecocktaildb.com/drink/${array.idDrink}-${array.strDrink}">Drink Information</a></div>`;
         });
         console.log(drinkslist);
-        let drinknow = document.querySelector("#results");
+        let drinknow = document.querySelector("#results-row");
         drinknow.innerHTML = drinkslist.join("");
       });
   };

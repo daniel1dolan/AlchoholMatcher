@@ -105,7 +105,7 @@ $(function() {
       /* something else */
     }, 1500);
     qBase.Age = choice;
-    if (choice != true) {
+    if (choice == "false") {
       Non_Alcoholic();
       $("#quiz").hide();
     } else {

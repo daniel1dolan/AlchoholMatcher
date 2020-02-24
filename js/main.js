@@ -179,6 +179,8 @@ $(function() {
     if (choice == "false") {
       Non_Alcoholic();
       $("#quiz").hide();
+      $("#results").show();
+      $(".navbar").css("margin-bottom", "20px");
     } else {
       nextQ(questions[0]);
     }

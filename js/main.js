@@ -155,7 +155,7 @@ $(function() {
         3: "Asian",
         4: "Italian",
         5: "Spanish",
-        6: "Argentinian",
+        6: "German",
         7: "Random"
       },
       image: "images/wine-vintage.jpeg"

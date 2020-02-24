@@ -274,6 +274,7 @@ $(function() {
         console.log(drinkslist);
         let drinknow = document.querySelector("#results-row");
         drinknow.innerHTML = drinkslist.join("");
+        $("#results").show();
         $("#quizholder").hide();
       });
   };

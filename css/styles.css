@@ -20,6 +20,17 @@
   text-align: left;
 }
 
+#beginButton {
+  transition-duration: 0.4s;
+  border-radius: 50%;
+  font-size: 18px;
+}
+
+#beginButton:hover {
+  background-color: red; /* Red */
+  color: white;
+}
+
 #restartButton {
   transition-duration: 0.4s;
   border-radius: 50%;
@@ -54,7 +65,13 @@
   text-align: center;
   font-size: 16px;
 }
-#refreshdiv {
+
+#beginDiv {
+  display: flex;
+  justify-content: center;
+}
+
+#refreshDiv {
   display: flex;
   justify-content: center;
 }

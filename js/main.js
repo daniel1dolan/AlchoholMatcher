@@ -1,4 +1,4 @@
-$(function() {
+E$(function() {
   var loading = $("#loadbar").hide();
   $(document)
     .ajaxStart(function() {
@@ -21,7 +21,7 @@ $(function() {
         console.log(fetchParam);
         switch (this.drinkTree) {
           case "1":
-          //Beer API
+            //Beer API
             let drinksforall = [];
 
             fetch(`https://api.punkapi.com/v2/beers?food=${fetchParam}`)
@@ -43,11 +43,24 @@ $(function() {
                 drinknow.innerHTML = drinkslist.join("");
               });
           case "2":
-        //Wine API
+            //Wine API
             `WineAPI${fetchParam}`;
+
+            fetch(
+              `https://api.spoonacular.com/food/wine/pairing?apiKey=8c68b07724d1450abd164de9a4455132&food=${fetchParam}`
+            )
+              .then(response => {
+                return response.json();
+              })
+              .then(array => {
+                let newDis = `<div class="col">${array.pairingText}<br><img width="200px" src=${array.productMatches[0].imageUrl}><br></div>`;
+                console.log(newDis);
+                let drinknow = document.querySelector("#results-row");
+                drinknow.innerHTML = newDis;
+              });
           case "3":
-        // Liquor API
-            let drinksforall = [];
+            // Liquor API
+            let drinksforLiquor = [];
             fetch(
               `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${fetchParam}`
             )
@@ -56,22 +69,23 @@ $(function() {
               })
               .then(drinkArray => {
                 console.log(drinkArray);
-                drinksforall = [...drinksforall, ...drinkArray.drinks];
+                drinksforLiquor = [...drinksforLiquor, ...drinkArray.drinks];
               })
               .then(() => {
-                let drinkslist = drinksforall.map(array => {
-                  console.log(drinksforall);
+                let drinkslist = drinksforLiquor.map(array => {
+                  console.log(drinksforLiquor);
                   return `<div class="col"><a href="https://www.thecocktaildb.com/drink/${array.idDrink}-${array.strDrink}">${array.strDrink}</a><br><img width="200px" src=${array.strDrinkThumb}><br></div>`;
                 });
                 console.log(drinkslist);
                 let drinknow = document.querySelector("#results-row");
                 drinknow.innerHTML = drinkslist.join("");
-          case "4":
+                // case "4":
+                //   pass
+              });
         }
       }
     }
   }
-
   let randomNum = () => {
     console.log(Math.ceil(Math.random() * 3));
   };
@@ -109,12 +123,16 @@ $(function() {
     {
       name: "Wine",
       qs: {
-        length: 4,
-        heading: "What color of wine would you like a recommendation for?",
-        1: "1",
-        2: "2",
-        3: "3",
-        4: "4"
+        length: 7,
+        heading:
+          "What type of food would you like your wine to pair well with?",
+        1: "French",
+        2: "Mexican",
+        3: "Asian",
+        4: "Italian",
+        5: "Spanish",
+        6: "Argentinian",
+        7: "Random"
       }
     },
     {

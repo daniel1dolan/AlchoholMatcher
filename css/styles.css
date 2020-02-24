@@ -1,7 +1,21 @@
 #navHome {
-  background-color: purple;
+  background-color: #4d7298;
 }
 
+#quizholder {
+  background-color: #77a6b6;
+}
+
+#results {
+  background-color: #9dc3c2;
+  padding: 30px;
+  text-align: center;
+  font-size: 16px;
+}
+
+#fullpage {
+  background-color: #b3d89c;
+}
 #navText {
   text-size-adjust: large;
 }

@@ -41,6 +41,7 @@ $(function() {
                 console.log(drinkslist);
                 let drinknow = document.querySelector("#results-row");
                 drinknow.innerHTML = drinkslist.join("");
+                $("#quizholder").hide();
               });
           case "2":
             //Wine API
@@ -57,6 +58,7 @@ $(function() {
                 console.log(newDis);
                 let drinknow = document.querySelector("#results-row");
                 drinknow.innerHTML = newDis;
+                $("#quizholder").hide();
               });
           case "3":
             // Liquor API
@@ -79,6 +81,7 @@ $(function() {
                 console.log(drinkslist);
                 let drinknow = document.querySelector("#results-row");
                 drinknow.innerHTML = drinkslist.join("");
+                $("#quizholder").hide();
                 // case "4":
                 //   pass
               });
@@ -260,6 +263,11 @@ $(function() {
         console.log(drinkslist);
         let drinknow = document.querySelector("#results-row");
         drinknow.innerHTML = drinkslist.join("");
+        $("#quizholder").hide();
       });
   };
+
+  $("#restartButton").on("click", function() {
+    location.reload();
+  });
 });

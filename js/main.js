@@ -42,7 +42,7 @@ $(function() {
                 let drinkslist = drinksforall.map(array => {
                   //   let drinkMulti = array.strDrink.join("-");
                   //   console.log(drinkMulti);
-                  return `<div class="col">${array.tagline}<br><img width="200px" src=${array.image_url}><br></div>`;
+                  return `<div class="card" style="width: 18rem;"><img class="card-img-top align-middle" style="height: auto; width: 100%" src=${array.image_url}><div class="card-body align-middle"><p class="card-text">${array.tagline}</p></div></div>`;
                 });
                 console.log(drinkslist);
                 let drinknow = document.querySelector("#results-row");
@@ -61,7 +61,7 @@ $(function() {
                 return response.json();
               })
               .then(array => {
-                let newDis = `<div class="col">${array.pairingText}<br><img width="200px" src=${array.productMatches[0].imageUrl}><br></div>`;
+                let newDis = `<div class="card" style="width: 500px;"><img class="card-img-top" src=${array.productMatches[0].imageUrl}><div class="card-body"><p class="card-text">${array.pairingText}</p></div></div>`;
                 console.log(newDis);
                 let drinknow = document.querySelector("#results-row");
                 drinknow.innerHTML = newDis;
@@ -84,7 +84,7 @@ $(function() {
               .then(() => {
                 let drinkslist = drinksforLiquor.map(array => {
                   console.log(drinksforLiquor);
-                  return `<div class="col"><a href="https://www.thecocktaildb.com/drink/${array.idDrink}-${array.strDrink}">${array.strDrink}</a><br><img width="200px" src=${array.strDrinkThumb}><br></div>`;
+                  return `<div class="card" style="width: 18rem;"><img class="card-image-top" width="200px" src=${array.strDrinkThumb}><a class="card-body" href="https://www.thecocktaildb.com/drink/${array.idDrink}-${array.strDrink}">${array.strDrink}</a></div>`;
                 });
                 console.log(drinkslist);
                 let drinknow = document.querySelector("#results-row");
@@ -182,6 +182,8 @@ $(function() {
     if (choice == "false") {
       Non_Alcoholic();
       $("#quiz").hide();
+      $("#results").show();
+      $(".navbar").css("margin-bottom", "20px");
     } else {
       nextQ(questions[0]);
     }
@@ -272,7 +274,7 @@ $(function() {
         let drinkslist = drinksforall.map(array => {
           //   let drinkMulti = array.strDrink.join("-");
           //   console.log(drinkMulti);
-          return `<div class="col"><a href="https://www.thecocktaildb.com/drink/${array.idDrink}-${array.strDrink}">${array.strDrink}</a><br><img width="200px" src=${array.strDrinkThumb}><br></div>`;
+          return `<div class="card" style="width: 18rem;"><img class="card-img-top" width="200px" src=${array.strDrinkThumb}><a class="card-body" href="https://www.thecocktaildb.com/drink/${array.idDrink}-${array.strDrink}">${array.strDrink}</a></div>`;
         });
         console.log(drinkslist);
         let drinknow = document.querySelector("#results-row");

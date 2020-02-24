@@ -8,6 +8,9 @@
 
 #results {
   background-color: #9dc3c2;
+  padding: 30px;
+  text-align: center;
+  font-size: 16px;
 }
 
 #fullpage {

@@ -48,6 +48,7 @@ $(function() {
                 let drinknow = document.querySelector("#results-row");
                 drinknow.innerHTML = drinkslist.join("");
                 $("#quizholder").hide();
+                $("#pageDisplay").hide();
               });
             break;
           case "2":
@@ -66,6 +67,7 @@ $(function() {
                 let drinknow = document.querySelector("#results-row");
                 drinknow.innerHTML = newDis;
                 $("#quizholder").hide();
+                $("#pageDisplay").hide();
               });
             break;
           case "3":
@@ -90,6 +92,7 @@ $(function() {
                 let drinknow = document.querySelector("#results-row");
                 drinknow.innerHTML = drinkslist.join("");
                 $("#quizholder").hide();
+                $("#pageDisplay").hide();
                 // case "4":
                 //   pass
               });
@@ -281,6 +284,7 @@ $(function() {
         drinknow.innerHTML = drinkslist.join("");
         $("#results").show();
         $("#quizholder").hide();
+        $("#pageDisplay").hide();
       });
   };
 

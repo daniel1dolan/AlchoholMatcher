@@ -8,6 +8,10 @@ $(function() {
       loading.hide();
     });
 
+  $("#results").hide();
+
+  $(".navbar").css("margin-bottom", "0");
+
   class QTaker {
     constructor(drinkTree, innerTree) {
       this.age = false;
@@ -19,6 +23,8 @@ $(function() {
       if (parseInt(this.innerTree) > 0) {
         let fetchParam = questions[this.drinkTree]["qs"][this.innerTree];
         console.log(fetchParam);
+        $("#results").show();
+        $(".navbar").css("margin-bottom", "20px");
         switch (this.drinkTree) {
           case "1":
             //Beer API
@@ -41,6 +47,7 @@ $(function() {
                 console.log(drinkslist);
                 let drinknow = document.querySelector("#results-row");
                 drinknow.innerHTML = drinkslist.join("");
+                $("#quizholder").hide();
               });
           case "2":
             //Wine API
@@ -57,6 +64,7 @@ $(function() {
                 console.log(newDis);
                 let drinknow = document.querySelector("#results-row");
                 drinknow.innerHTML = newDis;
+                $("#quizholder").hide();
               });
           case "3":
             // Liquor API
@@ -79,6 +87,7 @@ $(function() {
                 console.log(drinkslist);
                 let drinknow = document.querySelector("#results-row");
                 drinknow.innerHTML = drinkslist.join("");
+                $("#quizholder").hide();
                 // case "4":
                 //   pass
               });
@@ -104,8 +113,7 @@ $(function() {
         2: "Wine",
         3: "Cocktail",
         4: "Suprise me!"
-      },
-      next: "question[1]"
+      }
     },
     {
       name: "Beer",
@@ -118,7 +126,8 @@ $(function() {
         3: "Asian",
         4: "Italian",
         5: "Random"
-      }
+      },
+      image: "images/beer-vintage.jpeg"
     },
     {
       name: "Wine",
@@ -133,7 +142,8 @@ $(function() {
         5: "Spanish",
         6: "Argentinian",
         7: "Random"
-      }
+      },
+      image: "images/wine-vintage.jpeg"
     },
     {
       name: "Cocktails",
@@ -147,7 +157,8 @@ $(function() {
         5: "Tequila",
         6: "Brandy",
         7: "Random"
-      }
+      },
+      image: "images/monkey-liquor.jpeg"
     }
   ];
 
@@ -191,6 +202,9 @@ $(function() {
     console.log(quiz);
     quiz.empty();
     console.log(Qans);
+    if (Qans["name"] != "Aged") {
+      quiz.append(`<img width="300px" src=${Qans["image"]}></img>`);
+    }
     for (let i = 1; i <= Qans["qs"]["length"]; i++) {
       quiz.append(`<label
         id="q${i}"
@@ -260,6 +274,11 @@ $(function() {
         console.log(drinkslist);
         let drinknow = document.querySelector("#results-row");
         drinknow.innerHTML = drinkslist.join("");
+        $("#quizholder").hide();
       });
   };
+
+  $("#restartButton").on("click", function() {
+    location.reload();
+  });
 });

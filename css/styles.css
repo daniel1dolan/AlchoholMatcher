@@ -1,9 +1,30 @@
 #navHome {
   background-color: #4d7298;
+  
 }
 
+
+  
 #quizholder {
-  background-color: #77a6b6;
+  
+   
+    /* background-image: url(images/q-u-i-Zrp9b3PMIy8-unsplash.jpg) ;  */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-image: url("q-u-i-Zrp9b3PMIy8-unsplash.jpg");
+    width: 400px;
+    height: 400px;
+}
+
+#quiz {
+  text-align: center;
+}
+
+#quiz img {
+  padding: 10px;
+  margin: auto;
 }
 
 #results {
@@ -11,6 +32,10 @@
   padding: 30px;
   text-align: center;
   font-size: 16px;
+}
+#refreshdiv {
+  display: flex;
+  justify-content: center;
 }
 
 #fullpage {
@@ -172,7 +197,8 @@
     }
     
     .modal-body {
-        min-height: 205px
+        min-height: 205px;
+        
     }
     #loadbar {
         position: absolute;

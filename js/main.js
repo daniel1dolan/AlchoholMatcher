@@ -1,4 +1,4 @@
-E$(function() {
+$(function() {
   var loading = $("#loadbar").hide();
   $(document)
     .ajaxStart(function() {

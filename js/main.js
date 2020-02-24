@@ -49,6 +49,7 @@ $(function() {
                 drinknow.innerHTML = drinkslist.join("");
                 $("#quizholder").hide();
               });
+            break;
           case "2":
             //Wine API
             `WineAPI${fetchParam}`;
@@ -66,6 +67,7 @@ $(function() {
                 drinknow.innerHTML = newDis;
                 $("#quizholder").hide();
               });
+            break;
           case "3":
             // Liquor API
             let drinksforLiquor = [];
@@ -82,7 +84,7 @@ $(function() {
               .then(() => {
                 let drinkslist = drinksforLiquor.map(array => {
                   console.log(drinksforLiquor);
-                  return `<div class="card" style="width: 18rem;"><img class="card-image-top" width="200px" src=${array.strDrinkThumb}><a class="card-body" href="https://www.thecocktaildb.com/drink/${array.idDrink}-${array.strDrink}">${array.strDrink}</a></div>`;
+                  return `<div class="card" style="width: 18rem;"><img class="card-img-top" width="180px" src=${array.strDrinkThumb}><a class="card-body" href="https://www.thecocktaildb.com/drink/${array.idDrink}-${array.strDrink}">${array.strDrink}</a></div>`;
                 });
                 console.log(drinkslist);
                 let drinknow = document.querySelector("#results-row");
@@ -91,6 +93,7 @@ $(function() {
                 // case "4":
                 //   pass
               });
+            break;
         }
       }
     }

@@ -3,19 +3,19 @@
   
 }
 
-
+#bg {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%;
+    height: 100%;
+    /* Preserve aspet ratio */
+    /* min-width: 100%;
+    min-height: 100%; */
+  }
   
 #quizholder {
-  
-   
-    /* background-image: url(images/q-u-i-Zrp9b3PMIy8-unsplash.jpg) ;  */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-image: url("q-u-i-Zrp9b3PMIy8-unsplash.jpg");
-    width: 400px;
-    height: 400px;
+  background-color: lightblue;
 }
 
 #quiz {

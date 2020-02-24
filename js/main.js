@@ -111,10 +111,10 @@ $(function() {
     }
   }
   let randomNum = () => {
-    console.log(Math.ceil(Math.random() * 3));
+    return Math.ceil(Math.random() * 3);
   };
 
-  randomNum();
+  // randomNum();
 
   const qBase = new QTaker(0, 0);
 
@@ -211,19 +211,75 @@ $(function() {
   };
 
   let nextQ = Qans => {
-    // let qNum = $("#qid");
-    // qNum.text() = qNum.text().parseint() + 1;
-    // console.log(qNum.text);
-    $("#heading").text(Qans["qs"]["heading"]);
-    let quiz = $("#quiz");
-    console.log(quiz);
-    quiz.empty();
-    console.log(Qans);
-    if (Qans["name"] != "Aged") {
-      quiz.append(`<img width="300px" src=${Qans["image"]}></img>`);
-    }
-    for (let i = 1; i <= Qans["qs"]["length"]; i++) {
-      quiz.append(`<label
+    if (qBase.drinkTree == 4) {
+      let ranResult = randomNum();
+      console.log(ranResult);
+      if (ranResult == 1) {
+        let drinksforall = [];
+        fetch(`https://api.punkapi.com/v2/beers/random`)
+          .then(response => {
+            return response.json();
+          })
+          .then(array => {
+            console.log(array);
+            let newDis = `<div class="card" style="width: 18rem;"><img class="card-img-top align-middle" style="height: auto; width: 100%" src=${array.image_url}><div class="card-body align-middle"><p class="card-text">${array.tagline}</p></div></div>`;
+            let drinknow = document.querySelector("#results-row");
+            drinknow.innerHTML = newDis;
+            $("#quizholder").hide();
+            $("#pageDisplay").hide();
+          });
+      } else if (ranResult == 2) {
+        fetch(
+          `https://api.spoonacular.com/food/wine/recommendation?wine=merlot&apiKey=8c68b07724d1450abd164de9a4455132&maxPrice=150`
+        )
+          .then(response => {
+            return response.json();
+          })
+          .then(array => {
+            console.log(array);
+            let newDis = `<div class="card" style="width: 500px;"><img class="card-img-top" src=${array.recommendedWines[0].imageUrl}><div class="card-body"><p class="card-text">${array.recommendedWines[0].description}</p></div></div>`;
+            console.log(newDis);
+            let wineRandom = document.querySelector("#results-row");
+            wineRandom.innerHTML = newDis;
+            $("#quizholder").hide();
+            $("#pageDisplay").hide();
+          });
+      } else if (ranResult == 3) {
+        let drinksforLiquor = [];
+        fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
+          .then(response => {
+            return response.json();
+          })
+          .then(drinkArray => {
+            console.log(drinkArray);
+            drinksforLiquor = [...drinksforLiquor, ...drinkArray.drinks];
+          })
+          .then(() => {
+            let drinkslist = drinksforLiquor.map(array => {
+              console.log(drinksforLiquor);
+              return `<div class="card" style="width: 18rem;"><img class="card-img-top" width="180px" src=${array.strDrinkThumb}><a class="card-body" href="https://www.thecocktaildb.com/drink/${array.idDrink}-${array.strDrink}">${array.strDrink}</a></div>`;
+            });
+            console.log(drinkslist);
+            let drinknow = document.querySelector("#results-row");
+            drinknow.innerHTML = drinkslist.join("");
+            $("#quizholder").hide();
+            $("#pageDisplay").hide();
+          });
+      }
+    } else {
+      // let qNum = $("#qid");
+      // qNum.text() = qNum.text().parseint() + 1;
+      // console.log(qNum.text);
+      $("#heading").text(Qans["qs"]["heading"]);
+      let quiz = $("#quiz");
+      console.log(quiz);
+      quiz.empty();
+      console.log(Qans);
+      if (Qans["name"] != "Aged") {
+        quiz.append(`<img width="300px" src=${Qans["image"]}></img>`);
+      }
+      for (let i = 1; i <= Qans["qs"]["length"]; i++) {
+        quiz.append(`<label
         id="q${i}"
         class="element-animation1 btn btn-lg btn-primary btn-block"
         ><span class="btn-label"
@@ -231,41 +287,42 @@ $(function() {
         ></span>
         <input type="radio" name="q_answer" value="${i}" />${Qans["qs"][i]}</label
       >`);
-    }
-    if (qBase.drinkTree < 1) {
-      $("label.btn").on("click", function() {
-        var choice = $(this)
-          .find("input:radio")
-          .val();
-        console.log(choice);
-        $("#loadbar").show();
-        $("#quiz").fadeOut();
-        setTimeout(function() {
-          $("#answer").html($(this).checking(choice));
-          $("#quiz").show();
-          $("#loadbar").fadeOut();
-          /* something else */
-        }, 1500);
-        qBase.drinkTree = choice;
-        nextQ(questions[qBase.drinkTree]);
-      });
-    } else {
-      $("label.btn").on("click", function() {
-        var choice = $(this)
-          .find("input:radio")
-          .val();
-        console.log("the choice:", choice);
-        $("#loadbar").show();
-        $("#quiz").fadeOut();
-        setTimeout(function() {
-          $("#answer").html($(this).checking(choice));
-          $("#quiz").show();
-          $("#loadbar").fadeOut();
-          /* something else */
-        }, 1500);
-        qBase.innerTree = choice;
-        qBase.finCheck();
-      });
+      }
+      if (qBase.drinkTree < 1) {
+        $("label.btn").on("click", function() {
+          var choice = $(this)
+            .find("input:radio")
+            .val();
+          console.log(choice);
+          $("#loadbar").show();
+          $("#quiz").fadeOut();
+          setTimeout(function() {
+            $("#answer").html($(this).checking(choice));
+            $("#quiz").show();
+            $("#loadbar").fadeOut();
+            /* something else */
+          }, 1500);
+          qBase.drinkTree = choice;
+          nextQ(questions[qBase.drinkTree]);
+        });
+      } else {
+        $("label.btn").on("click", function() {
+          var choice = $(this)
+            .find("input:radio")
+            .val();
+          console.log("the choice:", choice);
+          $("#loadbar").show();
+          $("#quiz").fadeOut();
+          setTimeout(function() {
+            $("#answer").html($(this).checking(choice));
+            $("#quiz").show();
+            $("#loadbar").fadeOut();
+            /* something else */
+          }, 1500);
+          qBase.innerTree = choice;
+          qBase.finCheck();
+        });
+      }
     }
   };
 

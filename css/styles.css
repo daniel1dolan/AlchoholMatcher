@@ -6,6 +6,15 @@
   background-color: #77a6b6;
 }
 
+#quiz {
+  text-align: center;
+}
+
+#quiz img {
+  padding: 10px;
+  margin: auto;
+}
+
 #results {
   background-color: #9dc3c2;
   padding: 30px;

@@ -9,6 +9,15 @@ $(function() {
     });
 
   $("#results").hide();
+  $("#quizholder").hide();
+  $("#refreshDiv").hide();
+
+  $("#beginButton").on("click", function() {
+    $("#quizholder").show();
+    $("#refreshDiv").show();
+    $("#beginDiv").hide();
+    $("#pageDisplay").hide();
+  });
 
   $(".navbar").css("margin-bottom", "0");
 

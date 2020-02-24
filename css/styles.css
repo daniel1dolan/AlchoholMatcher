@@ -1,9 +1,21 @@
+#liquorCard {
+  background-color: #9dc3c2;
+}
+
+#wineCard {
+  background-color: #77a6b6;
+}
+
+#beerCard {
+  background-color: #4d7298;
+}
+
 #footer {
   background-color: #4d7298;
 }
 
 #pageDisplay {
-  background-color: hotpink;
+  background-color: #d0efb1;
   font-size: 16;
   text-align: left;
 }

@@ -1,4 +1,23 @@
 /* unvisited link */
+a.card-body:link {
+  color: black;
+}
+
+/* visited link */
+a.card-body:visited {
+  color: black;
+}
+
+/* mouse over link */
+a.card-body:hover {
+  color: black;
+}
+
+/* selected link */
+a.card-body:active {
+  color: black;
+}
+
 a:link {
   color: white;
 }

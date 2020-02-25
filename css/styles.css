@@ -67,11 +67,13 @@
 }
 
 #beginDiv {
+  background-color: #b3d89c;
   display: flex;
   justify-content: center;
 }
 
 #refreshDiv {
+  background-color: #b3d89c;
   display: flex;
   justify-content: center;
 }

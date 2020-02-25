@@ -55,15 +55,15 @@ a:active {
 }
 
 #liquorCard {
-  background-color: #9dc3c2;
+  background-color: rgba(157, 195, 194, 0.75);
 }
 
 #wineCard {
-  background-color: #77a6b6;
+  background-color: rgba(119, 166, 182, 0.75);
 }
 
 #beerCard {
-  background-color: #4d7298;
+  background-color: rgba(77, 114, 152, 0.75);
 }
 
 #footer {

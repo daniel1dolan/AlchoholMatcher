@@ -151,7 +151,8 @@ $(function() {
         4: "Italian",
         5: "Random"
       },
-      image: "images/beer-vintage.jpeg"
+      image: "images/beer-vintage.jpeg",
+      backgroundimage: "images/beerglass-unsplash.jpg"
     },
     {
       name: "Wine",
@@ -167,7 +168,8 @@ $(function() {
         6: "German",
         7: "Random"
       },
-      image: "images/wine-vintage.jpeg"
+      image: "images/wine-vintage.jpeg",
+      backgroundimage: "images/kelsey-knight-udj2tD3WKsY-unsplash.jpg"
     },
     {
       name: "Cocktails",
@@ -182,7 +184,8 @@ $(function() {
         6: "Brandy",
         7: "Random"
       },
-      image: "images/monkey-liquor.jpeg"
+      image: "images/monkey-liquor.jpeg",
+      backgroundimage: "images/louis-hansel-shotsoflouis-Kix0S25vJEo-unsplash.jpg"
     }
   ];
 
@@ -332,6 +335,7 @@ $(function() {
             /* something else */
           }, 1500);
           qBase.drinkTree = choice;
+          $("#bg").attr("src", questions[qBase.drinkTree]["backgroundimage"])
           nextQ(questions[qBase.drinkTree]);
         });
       } else {

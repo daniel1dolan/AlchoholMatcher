@@ -185,7 +185,11 @@ $(function() {
         7: "Random"
       },
       image: "images/monkey-liquor.jpeg",
-      backgroundimage: "images/louis-hansel-shotsoflouis-Kix0S25vJEo-unsplash.jpg"
+      backgroundimage:
+        "images/louis-hansel-shotsoflouis-Kix0S25vJEo-unsplash.jpg"
+    },
+    {
+      backgroundimage: "images/bottles-on-shelf-unsplash.jpg"
     }
   ];
 
@@ -335,7 +339,7 @@ $(function() {
             /* something else */
           }, 1500);
           qBase.drinkTree = choice;
-          $("#bg").attr("src", questions[qBase.drinkTree]["backgroundimage"])
+          $("#bg").attr("src", questions[qBase.drinkTree]["backgroundimage"]);
           nextQ(questions[qBase.drinkTree]);
         });
       } else {

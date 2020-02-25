@@ -110,8 +110,8 @@ $(function() {
       }
     }
   }
-  let randomNum = () => {
-    return Math.ceil(Math.random() * 3);
+  let randomNum = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   };
 
   // randomNum();
@@ -211,33 +211,53 @@ $(function() {
   };
 
   let nextQ = Qans => {
-    if (qBase.drinkTree == 4) {
-      let ranResult = randomNum();
+    if (qBase.drinkTree == "4") {
+      let ranResult = randomNum(1, 3);
       console.log(ranResult);
+      $("#results").show();
+      $(".navbar").css("margin-bottom", "20px");
       if (ranResult == 1) {
-        let drinksforall = [];
         fetch(`https://api.punkapi.com/v2/beers/random`)
           .then(response => {
             return response.json();
           })
           .then(array => {
             console.log(array);
-            let newDis = `<div class="card" style="width: 18rem;"><img class="card-img-top align-middle" style="height: auto; width: 100%" src=${array.image_url}><div class="card-body align-middle"><p class="card-text">${array.tagline}</p></div></div>`;
+            let newDis = `<div class="card" style="width: 18rem;"><img class="card-img-top align-middle" width="18rem" src=${array[0].image_url}><div class="card-body align-middle"><p class="card-text">${array[0].tagline}</p></div></div>`;
             let drinknow = document.querySelector("#results-row");
             drinknow.innerHTML = newDis;
             $("#quizholder").hide();
             $("#pageDisplay").hide();
           });
       } else if (ranResult == 2) {
+        let wines = [
+          "merlot",
+          "cabernet sauvignon",
+          "prosecco",
+          "chardonnay",
+          "moscato",
+          "pinot noir",
+          "pinot grigio",
+          "riesling",
+          "bordeaux",
+          "malbec",
+          "syrah",
+          "zinfandel",
+          "grenache",
+          "chianti",
+          "champagne"
+        ];
+        let wineNum = randomNum(0, wines.length - 1);
+        console.log(wines[wineNum]);
         fetch(
-          `https://api.spoonacular.com/food/wine/recommendation?wine=merlot&apiKey=8c68b07724d1450abd164de9a4455132&maxPrice=150`
+          `https://api.spoonacular.com/food/wine/recommendation?wine=${wines[wineNum]}&apiKey=8c68b07724d1450abd164de9a4455132&maxPrice=150`
         )
           .then(response => {
             return response.json();
           })
           .then(array => {
             console.log(array);
-            let newDis = `<div class="card" style="width: 500px;"><img class="card-img-top" src=${array.recommendedWines[0].imageUrl}><div class="card-body"><p class="card-text">${array.recommendedWines[0].description}</p></div></div>`;
+            let newDis = `<div class="card" style="width: 500px;"><img class="card-img-top" width="200px" src=${array.recommendedWines[0].imageUrl}><div class="card-body"><p class="card-text">${array.recommendedWines[0].title}: ${array.recommendedWines[0].description} It is priced at ${array.recommendedWines[0].price}</p></div></div>`;
             console.log(newDis);
             let wineRandom = document.querySelector("#results-row");
             wineRandom.innerHTML = newDis;

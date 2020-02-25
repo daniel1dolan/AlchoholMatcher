@@ -1,13 +1,13 @@
 <html>
   <head>
-    <title>Title</title>
+    <title>Alcohol Matcher</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-
+    <link rel="icon" href="images/bottlefave.png" type="image" sizes="14.5x10">
     <!-- Bootstrap CSS -->
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link
@@ -32,15 +32,47 @@
 
       <nav id="navHome" class="navbar navbar-inverse justify-content-center">
         <div id="navText" class="d-flex">
-          <a class="p-2" href="#"><h3>Home</h3></a>
-          <a class="p-2" href="#"><h3>About Us</h3></a>
-          <a class="p-2" href="#"><h3>Events</h3></a>
-          <a class="p-2" href="#"><h3>Contact Us</h3></a>
-
+          <a class="p-2" href="index.html"><h3>Home</h3></a>
+          <a class="p-2" href="aboutus.html"><h3>About Us</h3></a>
         </div>
       </nav>
-      <div class="container" id="results">
-        <div class="row" id="results-row"></div>
+      <div class="container" id="pageDisplay">
+        <p>
+          Hello there, and welcome to our alcohol quiz. This page has been
+          desgined to recommend you alcohol based on your personal tastes. We
+          will be asking you a series of short, quick questions and then giving
+          you a recommendation based on your responses. For more information
+          about the three types of alcohol, check out the links below.
+        </p>
+        <div class="card row-hl d-flex flex-row">
+          <div class="p-4 col-4 item-hl" id="beerCard">
+            <a href="https://en.wikipedia.org/wiki/Beer"><h1>Beer</h1></a>
+            <img class=card-img-top
+              src="images/jonas-jacobsson-p2KA3Q2lfSw-unsplash.jpg"
+              height="300px"
+            />
+          </div>
+          <div class="card p-4 col-4 item-hl" id="wineCard">
+            <a href="https://en.wikipedia.org/wiki/Wine"><h1>Wine</h1></a>
+            <img class=card-img-top
+            src="images/hermes-rivera-aK6WGqxyHFw-unsplash.jpg"
+              height="300px"
+              alt=""
+            />
+          </div>
+          <div class="card p-4 col-4 item-hl" id="liquorCard">
+            <a href="https://en.wikipedia.org/wiki/Liquor"><h1>Liquor</h1></a>
+            <img class=card-img-top
+            src="images/john-hernandez-0-4zzoh3JXU-unsplash.jpg"
+              height="300px"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+        <div class="container" id="results">
+          <div class="row justify-content-center card-columns" id="results-row"></div>
+        </div>
       </div>
       <div class="container-fluid" id="quizholder">
         <div class="modal-dialog">
@@ -90,9 +122,17 @@
           </div>
         </div>
       </div>
-      <div style="position:relative" id="refreshdiv"><button  id="restartButton">Restart!</button></div>
+      <div id="beginDiv">
+        <button id="beginButton">Begin Quiz!</button>
+      </div>
+      <div id="refreshDiv">
+        <button id="restartButton">Restart Quiz!</button>
+      </div>
     </div>
-    
+    <div class="row text-white justify-content-center" id="footer">
+      Want to learn more about our full-stack program? Contact &nbsp;<a href="https://www.digitalcrafts.com/houston-campus.html"> Digital Crafts-Houston Campus</a> 
+    </div>
+
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="

@@ -9,6 +9,15 @@ $(function() {
     });
 
   $("#results").hide();
+  $("#quizholder").hide();
+  $("#refreshDiv").hide();
+
+  $("#beginButton").on("click", function() {
+    $("#quizholder").show();
+    $("#refreshDiv").show();
+    $("#beginDiv").hide();
+    $("#pageDisplay").hide();
+  });
 
   $(".navbar").css("margin-bottom", "0");
 
@@ -21,7 +30,16 @@ $(function() {
     finCheck() {
       console.log("finwork");
       if (parseInt(this.innerTree) > 0) {
-        let fetchParam = questions[this.drinkTree]["qs"][this.innerTree];
+        let fetchParam = 0;
+        if (questions[this.drinkTree]["qs"][this.innerTree] == "Random") {
+          let randomSel = randomNum(
+            1,
+            questions[this.drinkTree]["qs"]["length"] - 1
+          );
+          fetchParam = questions[this.drinkTree]["qs"][randomSel];
+        } else {
+          fetchParam = questions[this.drinkTree]["qs"][this.innerTree];
+        }
         console.log(fetchParam);
         $("#results").show();
         $(".navbar").css("margin-bottom", "20px");
@@ -42,13 +60,15 @@ $(function() {
                 let drinkslist = drinksforall.map(array => {
                   //   let drinkMulti = array.strDrink.join("-");
                   //   console.log(drinkMulti);
-                  return `<div class="col">${array.tagline}<br><img width="200px" src=${array.image_url}><br></div>`;
+                  return `<div class="card" style="width: 18rem;"><img class="card-img-top align-middle" style="height: auto; width: 100%" src=${array.image_url}><div class="card-body align-middle"><p class="card-text">${array.tagline}</p></div></div>`;
                 });
                 console.log(drinkslist);
                 let drinknow = document.querySelector("#results-row");
                 drinknow.innerHTML = drinkslist.join("");
                 $("#quizholder").hide();
+                $("#pageDisplay").hide();
               });
+            break;
           case "2":
             //Wine API
             `WineAPI${fetchParam}`;
@@ -60,12 +80,14 @@ $(function() {
                 return response.json();
               })
               .then(array => {
-                let newDis = `<div class="col">${array.pairingText}<br><img width="200px" src=${array.productMatches[0].imageUrl}><br></div>`;
+                let newDis = `<div class="card" style="width: 500px;"><img class="card-img-top" src=${array.productMatches[0].imageUrl}><div class="card-body"><p class="card-text">${array.pairingText}</p></div></div>`;
                 console.log(newDis);
                 let drinknow = document.querySelector("#results-row");
                 drinknow.innerHTML = newDis;
                 $("#quizholder").hide();
+                $("#pageDisplay").hide();
               });
+            break;
           case "3":
             // Liquor API
             let drinksforLiquor = [];
@@ -82,24 +104,26 @@ $(function() {
               .then(() => {
                 let drinkslist = drinksforLiquor.map(array => {
                   console.log(drinksforLiquor);
-                  return `<div class="col"><a href="https://www.thecocktaildb.com/drink/${array.idDrink}-${array.strDrink}">${array.strDrink}</a><br><img width="200px" src=${array.strDrinkThumb}><br></div>`;
+                  return `<div class="card" style="width: 18rem;"><img class="card-img-top" width="180px" src=${array.strDrinkThumb}><a class="card-body" href="https://www.thecocktaildb.com/drink/${array.idDrink}-${array.strDrink}">${array.strDrink}</a></div>`;
                 });
                 console.log(drinkslist);
                 let drinknow = document.querySelector("#results-row");
                 drinknow.innerHTML = drinkslist.join("");
                 $("#quizholder").hide();
+                $("#pageDisplay").hide();
                 // case "4":
                 //   pass
               });
+            break;
         }
       }
     }
   }
-  let randomNum = () => {
-    console.log(Math.ceil(Math.random() * 3));
+  let randomNum = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   };
 
-  randomNum();
+  // randomNum();
 
   const qBase = new QTaker(0, 0);
 
@@ -140,7 +164,7 @@ $(function() {
         3: "Asian",
         4: "Italian",
         5: "Spanish",
-        6: "Argentinian",
+        6: "German",
         7: "Random"
       },
       image: "images/wine-vintage.jpeg"
@@ -179,6 +203,8 @@ $(function() {
     if (choice == "false") {
       Non_Alcoholic();
       $("#quiz").hide();
+      $("#results").show();
+      $(".navbar").css("margin-bottom", "20px");
     } else {
       nextQ(questions[0]);
     }
@@ -194,19 +220,95 @@ $(function() {
   };
 
   let nextQ = Qans => {
-    // let qNum = $("#qid");
-    // qNum.text() = qNum.text().parseint() + 1;
-    // console.log(qNum.text);
-    $("#heading").text(Qans["qs"]["heading"]);
-    let quiz = $("#quiz");
-    console.log(quiz);
-    quiz.empty();
-    console.log(Qans);
-    if (Qans["name"] != "Aged") {
-      quiz.append(`<img width="300px" src=${Qans["image"]}></img>`);
-    }
-    for (let i = 1; i <= Qans["qs"]["length"]; i++) {
-      quiz.append(`<label
+    if (qBase.drinkTree == "4") {
+      let ranResult = randomNum(1, 3);
+      console.log(ranResult);
+      $("#results").show();
+      $(".navbar").css("margin-bottom", "20px");
+      if (ranResult == 1) {
+        fetch(`https://api.punkapi.com/v2/beers/random`)
+          .then(response => {
+            return response.json();
+          })
+          .then(array => {
+            console.log(array);
+            let newDis = `<div class="card" style="width: 18rem;"><img class="card-img-top align-middle" width="18rem" src=${array[0].image_url}><div class="card-body align-middle"><p class="card-text">${array[0].tagline}</p></div></div>`;
+            let drinknow = document.querySelector("#results-row");
+            drinknow.innerHTML = newDis;
+            $("#quizholder").hide();
+            $("#pageDisplay").hide();
+          });
+      } else if (ranResult == 2) {
+        let wines = [
+          "merlot",
+          "cabernet sauvignon",
+          "prosecco",
+          "chardonnay",
+          "moscato",
+          "pinot noir",
+          "pinot grigio",
+          "riesling",
+          "bordeaux",
+          "malbec",
+          "syrah",
+          "zinfandel",
+          "grenache",
+          "chianti",
+          "champagne"
+        ];
+        let wineNum = randomNum(0, wines.length - 1);
+        console.log(wines[wineNum]);
+        fetch(
+          `https://api.spoonacular.com/food/wine/recommendation?wine=${wines[wineNum]}&apiKey=8c68b07724d1450abd164de9a4455132&maxPrice=150`
+        )
+          .then(response => {
+            return response.json();
+          })
+          .then(array => {
+            console.log(array);
+            let newDis = `<div class="card" style="width: 500px;"><img class="card-img-top" width="200px" src=${array.recommendedWines[0].imageUrl}><div class="card-body"><p class="card-text">${array.recommendedWines[0].title}: ${array.recommendedWines[0].description} It is priced at ${array.recommendedWines[0].price}</p></div></div>`;
+            console.log(newDis);
+            let wineRandom = document.querySelector("#results-row");
+            wineRandom.innerHTML = newDis;
+            $("#quizholder").hide();
+            $("#pageDisplay").hide();
+          });
+      } else if (ranResult == 3) {
+        let drinksforLiquor = [];
+        fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
+          .then(response => {
+            return response.json();
+          })
+          .then(drinkArray => {
+            console.log(drinkArray);
+            drinksforLiquor = [...drinksforLiquor, ...drinkArray.drinks];
+          })
+          .then(() => {
+            let drinkslist = drinksforLiquor.map(array => {
+              console.log(drinksforLiquor);
+              return `<div class="card" style="width: 18rem;"><img class="card-img-top" width="180px" src=${array.strDrinkThumb}><a class="card-body" href="https://www.thecocktaildb.com/drink/${array.idDrink}-${array.strDrink}">${array.strDrink}</a></div>`;
+            });
+            console.log(drinkslist);
+            let drinknow = document.querySelector("#results-row");
+            drinknow.innerHTML = drinkslist.join("");
+            $("#quizholder").hide();
+            $("#pageDisplay").hide();
+          });
+      }
+    } else {
+      // let qNum = $("#qid");
+      // qNum.text() = qNum.text().parseint() + 1;
+      // console.log(qNum.text);
+      $("#heading").text(Qans["qs"]["heading"]);
+      let quiz = $("#quiz");
+      console.log(quiz);
+      quiz.empty();
+      console.log(Qans);
+      if (Qans["name"] != "Aged") {
+        quiz.append(`<img width="300px" src=${Qans["image"]}></img>`);
+      }
+      for (let i = 1; i <= Qans["qs"]["length"]; i++) {
+        quiz.append(`<label
         id="q${i}"
         class="element-animation1 btn btn-lg btn-primary btn-block"
         ><span class="btn-label"
@@ -214,41 +316,42 @@ $(function() {
         ></span>
         <input type="radio" name="q_answer" value="${i}" />${Qans["qs"][i]}</label
       >`);
-    }
-    if (qBase.drinkTree < 1) {
-      $("label.btn").on("click", function() {
-        var choice = $(this)
-          .find("input:radio")
-          .val();
-        console.log(choice);
-        $("#loadbar").show();
-        $("#quiz").fadeOut();
-        setTimeout(function() {
-          $("#answer").html($(this).checking(choice));
-          $("#quiz").show();
-          $("#loadbar").fadeOut();
-          /* something else */
-        }, 1500);
-        qBase.drinkTree = choice;
-        nextQ(questions[qBase.drinkTree]);
-      });
-    } else {
-      $("label.btn").on("click", function() {
-        var choice = $(this)
-          .find("input:radio")
-          .val();
-        console.log("the choice:", choice);
-        $("#loadbar").show();
-        $("#quiz").fadeOut();
-        setTimeout(function() {
-          $("#answer").html($(this).checking(choice));
-          $("#quiz").show();
-          $("#loadbar").fadeOut();
-          /* something else */
-        }, 1500);
-        qBase.innerTree = choice;
-        qBase.finCheck();
-      });
+      }
+      if (qBase.drinkTree < 1) {
+        $("label.btn").on("click", function() {
+          var choice = $(this)
+            .find("input:radio")
+            .val();
+          console.log(choice);
+          $("#loadbar").show();
+          $("#quiz").fadeOut();
+          setTimeout(function() {
+            $("#answer").html($(this).checking(choice));
+            $("#quiz").show();
+            $("#loadbar").fadeOut();
+            /* something else */
+          }, 1500);
+          qBase.drinkTree = choice;
+          nextQ(questions[qBase.drinkTree]);
+        });
+      } else {
+        $("label.btn").on("click", function() {
+          var choice = $(this)
+            .find("input:radio")
+            .val();
+          console.log("the choice:", choice);
+          $("#loadbar").show();
+          $("#quiz").fadeOut();
+          setTimeout(function() {
+            $("#answer").html($(this).checking(choice));
+            $("#quiz").show();
+            $("#loadbar").fadeOut();
+            /* something else */
+          }, 1500);
+          qBase.innerTree = choice;
+          qBase.finCheck();
+        });
+      }
     }
   };
 
@@ -269,12 +372,14 @@ $(function() {
         let drinkslist = drinksforall.map(array => {
           //   let drinkMulti = array.strDrink.join("-");
           //   console.log(drinkMulti);
-          return `<div class="col"><a href="https://www.thecocktaildb.com/drink/${array.idDrink}-${array.strDrink}">${array.strDrink}</a><br><img width="200px" src=${array.strDrinkThumb}><br></div>`;
+          return `<div class="card" style="width: 18rem;"><img class="card-img-top" width="200px" src=${array.strDrinkThumb}><a class="card-body" href="https://www.thecocktaildb.com/drink/${array.idDrink}-${array.strDrink}">${array.strDrink}</a></div>`;
         });
         console.log(drinkslist);
         let drinknow = document.querySelector("#results-row");
         drinknow.innerHTML = drinkslist.join("");
+        $("#results").show();
         $("#quizholder").hide();
+        $("#pageDisplay").hide();
       });
   };
 

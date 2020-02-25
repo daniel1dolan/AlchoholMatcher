@@ -68,6 +68,7 @@ a:active {
 
 #footer {
   background-color: #4d7298;
+  display: relative;
 }
 
 #aboutUsBody {

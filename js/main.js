@@ -30,7 +30,16 @@ $(function() {
     finCheck() {
       console.log("finwork");
       if (parseInt(this.innerTree) > 0) {
-        let fetchParam = questions[this.drinkTree]["qs"][this.innerTree];
+        let fetchParam = 0;
+        if (questions[this.drinkTree]["qs"][this.innerTree] == "Random") {
+          let randomSel = randomNum(
+            1,
+            questions[this.drinkTree]["qs"]["length"] - 1
+          );
+          fetchParam = questions[this.drinkTree]["qs"][randomSel];
+        } else {
+          fetchParam = questions[this.drinkTree]["qs"][this.innerTree];
+        }
         console.log(fetchParam);
         $("#results").show();
         $(".navbar").css("margin-bottom", "20px");

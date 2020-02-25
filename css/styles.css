@@ -1,4 +1,9 @@
 /* unvisited link */
+.photocred {
+  font-size: 8px;
+  text-align: left;
+}
+
 a.card-body:link {
   color: black;
 }

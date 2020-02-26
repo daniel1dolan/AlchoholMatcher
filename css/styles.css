@@ -2,12 +2,14 @@
   color: white;
   text-align: left;
   position: relative;
+  /* align-self: flex-end; */
 }
 
 #startcredits {
   color: white;
   text-align: left;
   position: relative;
+  /* align-self: flex-end; */
 }
 
 .photocred {

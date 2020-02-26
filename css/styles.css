@@ -43,27 +43,27 @@ a:active {
 }
 
 #danielCard {
-  background-color: #9dc3c2;
+  background-color: rgba(157, 195, 194, 0.7);
 }
 
 #alexCard {
-  background-color: #77a6b6;
+  background-color: rgba(119, 166, 182, 0.7);
 }
 
 #diegoCard {
-  background-color: #4d7298;
+  background-color: rgba(77, 114, 152, 0.7);
 }
 
 #liquorCard {
-  background-color: #9dc3c2;
+  background-color: rgba(157, 195, 194, 0.75);
 }
 
 #wineCard {
-  background-color: #77a6b6;
+  background-color: rgba(119, 166, 182, 0.75);
 }
 
 #beerCard {
-  background-color: #4d7298;
+  background-color: rgba(77, 114, 152, 0.75);
 }
 
 #footer {
@@ -71,12 +71,16 @@ a:active {
   display: relative;
 }
 
+#footer2 {
+  background-color: #4d7298;
+  position: relative;
+}
+
 .credits {
   display: none;
 }
 
 #aboutUsBody {
-  background-color: #d0efb1;
   font-size: 16;
   text-align: left;
 }
@@ -115,6 +119,14 @@ a:active {
 
 #navHome {
   background-color: #4d7298;
+}
+
+#skyline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 #bg {

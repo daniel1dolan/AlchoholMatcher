@@ -153,7 +153,7 @@ $(function() {
       },
       image: "images/beer-vintage.jpeg",
       backgroundimage: "images/beerglass-unsplash.jpg",
-      credits: "Photo Credit: Timothy Dykes"
+      credits: "Background Credit: Timothy Dykes"
     },
     {
       name: "Wine",
@@ -171,7 +171,7 @@ $(function() {
       },
       image: "images/wine-vintage.jpeg",
       backgroundimage: "images/kelsey-knight-udj2tD3WKsY-unsplash.jpg",
-      credits: "Photo Credit: Kelsey Knight"
+      credits: "Background Credit: Kelsey Knight"
     },
     {
       name: "Cocktails",
@@ -189,11 +189,11 @@ $(function() {
       image: "images/monkey-liquor.jpeg",
       backgroundimage:
         "images/louis-hansel-shotsoflouis-Kix0S25vJEo-unsplash.jpg",
-      credits: "Photo Credit: Louis Hansel"
+      credits: "Background Credit: Louis Hansel"
     },
     {
       backgroundimage: "images/bottles-on-shelf-unsplash.jpg",
-      credits: "Photo Credit: John Hernandez"
+      credits: "Background Credit: John Hernandez"
     }
   ];
 

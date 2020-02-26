@@ -1,9 +1,21 @@
-/* unvisited link */
+#credits {
+  color: white;
+  text-align: left;
+  position: relative;
+}
+
+#startcredits {
+  color: white;
+  text-align: left;
+  position: relative;
+}
+
 .photocred {
   font-size: 8px;
   text-align: left;
 }
 
+/* unvisited link */
 a.card-body:link {
   color: black;
 }
@@ -73,7 +85,7 @@ a:active {
 
 #footer2 {
   background-color: #4d7298;
-  position: relative;
+  display: relative;
 }
 
 .credits {

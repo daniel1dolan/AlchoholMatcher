@@ -152,7 +152,8 @@ $(function() {
         5: "Random"
       },
       image: "images/beer-vintage.jpeg",
-      backgroundimage: "images/beerglass-unsplash.jpg"
+      backgroundimage: "images/beerglass-unsplash.jpg",
+      credits: "Photo Credit: Timothy Dykes"
     },
     {
       name: "Wine",
@@ -169,7 +170,8 @@ $(function() {
         7: "Random"
       },
       image: "images/wine-vintage.jpeg",
-      backgroundimage: "images/kelsey-knight-udj2tD3WKsY-unsplash.jpg"
+      backgroundimage: "images/kelsey-knight-udj2tD3WKsY-unsplash.jpg",
+      credits: "Photo Credit: Kelsey Knight"
     },
     {
       name: "Cocktails",
@@ -186,7 +188,8 @@ $(function() {
       },
       image: "images/monkey-liquor.jpeg",
       backgroundimage:
-        "images/louis-hansel-shotsoflouis-Kix0S25vJEo-unsplash.jpg"
+        "images/louis-hansel-shotsoflouis-Kix0S25vJEo-unsplash.jpg",
+      credits: "Photo Credit: Louis Hansel"
     },
     {
       backgroundimage: "images/bottles-on-shelf-unsplash.jpg"
@@ -340,6 +343,8 @@ $(function() {
           }, 1500);
           qBase.drinkTree = choice;
           $("#bg").attr("src", questions[qBase.drinkTree]["backgroundimage"]);
+          $("#credits").html(questions[qBase.drinkTree]["credits"]);
+          $("#startcredits").html("");
           nextQ(questions[qBase.drinkTree]);
         });
       } else {

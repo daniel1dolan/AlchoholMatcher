@@ -8,41 +8,43 @@
   </head>
   <body>
     <div id="results"></div>
+    <button id="checkPrice">Check Price</button>
+
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
       crossorigin="anonymous"
     ></script>
+    <script src="js/postM.js"></script>
     <script>
+      // $(() => {
+      //   let Non_Alcoholic = () => {
+      //     let drinksforall = [];
 
-      $(() => {
-        let Non_Alcoholic = () => {
-          let drinksforall = [];
+      //     fetch(
+      //       `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic`
+      //     )
+      //       .then(response => {
+      //         return response.json();
+      //       })
+      //       .then(drinkArray => {
+      //         console.log(drinkArray);
+      //         drinksforall = [...drinksforall, ...drinkArray.drinks];
+      //       })
+      //       .then(() => {
+      //         let drinkslist = drinksforall.map(array => {
+      //           //   let drinkMulti = array.strDrink.join("-");
+      //           //   console.log(drinkMulti);
+      //           return `<li>${array.strDrink}<br><img width="300px" src=${array.strDrinkThumb}><br><a href="https://www.thecocktaildb.com/drink/${array.idDrink}-${array.strDrink}">Drink Information</a></li>`;
+      //         });
+      //         console.log(drinkslist);
+      //         let drinknow = document.querySelector("#results");
+      //         drinknow.innerHTML = drinkslist.join("");
+      //       });
+      //   };
+      //   Non_Alcoholic();
 
-          fetch(
-            `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic`
-          )
-            .then(response => {
-              return response.json();
-            })
-            .then(drinkArray => {
-              console.log(drinkArray);
-              drinksforall = [...drinksforall, ...drinkArray.drinks];
-            })
-            .then(() => {
-              let drinkslist = drinksforall.map(array => {
-                //   let drinkMulti = array.strDrink.join("-");
-                //   console.log(drinkMulti);
-                return `<li>${array.strDrink}<br><img width="300px" src=${array.strDrinkThumb}><br><a href="https://www.thecocktaildb.com/drink/${array.idDrink}-${array.strDrink}">Drink Information</a></li>`;
-              });
-              console.log(drinkslist);
-              let drinknow = document.querySelector("#results");
-              drinknow.innerHTML = drinkslist.join("");
-            });
-        };
-        Non_Alcoholic();
-
-      });
+      // });
     </script>
   </body>
 </html>

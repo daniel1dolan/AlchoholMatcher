@@ -192,7 +192,8 @@ $(function() {
       credits: "Photo Credit: Louis Hansel"
     },
     {
-      backgroundimage: "images/bottles-on-shelf-unsplash.jpg"
+      backgroundimage: "images/bottles-on-shelf-unsplash.jpg",
+      credits: "Photo Credit: John Hernandez"
     }
   ];
 
@@ -344,7 +345,7 @@ $(function() {
           qBase.drinkTree = choice;
           $("#bg").attr("src", questions[qBase.drinkTree]["backgroundimage"]);
           $("#credits").html(questions[qBase.drinkTree]["credits"]);
-          $("#startcredits").html("");
+          // $("#startcredits").html("");
           nextQ(questions[qBase.drinkTree]);
         });
       } else {

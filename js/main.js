@@ -28,19 +28,22 @@ $(function() {
       this.innerTree = innerTree;
     }
     finCheck() {
-      console.log("finwork");
+      // Method that runs to check if a quiz tree is finished.
       if (parseInt(this.innerTree) > 0) {
         let fetchParam = 0;
         if (questions[this.drinkTree]["qs"][this.innerTree] == "Random") {
+          // Checks if the choice on an inner drink tree is random.
           let randomSel = randomNum(
             1,
             questions[this.drinkTree]["qs"]["length"] - 1
           );
+          // Generates a random choice in the chosen drink tree
           fetchParam = questions[this.drinkTree]["qs"][randomSel];
         } else {
+          // The fetch becomes the choice of the user.
           fetchParam = questions[this.drinkTree]["qs"][this.innerTree];
         }
-        console.log(fetchParam);
+        // The results div is shown, so the results can fill it.
         $("#results").show();
         $(".navbar").css("margin-bottom", "20px");
         switch (this.drinkTree) {

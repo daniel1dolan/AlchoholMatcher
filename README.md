@@ -18,23 +18,19 @@ For beer and wine, the user is given the option of what type of food they want t
 <h3>Daniel Dolan</h3>
 <b>Primary team role:</b> Javascript and Quiz functionality.
 </br>
-<b>Contributions:</b> Stuff
 
 <h3>Alex Plaetzer</h3>
 <b>Primary team role:</b> HTML and CSS styling. 
 </br>
 
-<b>Contributions:</b> Stuff
-
 <h3>Diego Rivera</h3>
 
 <b>Primary team role:</b> API calls and HTML and CSS styling.
 </br>
-<b>Contributions:</b> Stuff
 </br>
 </br>
 
-<h2><u>What we used:</u></h3>
+<h2><u>Tools used in the project:</u></h3>
 <h3>Languages:</h3>
 <ul>
     <li>HTML</li>
@@ -57,6 +53,11 @@ Other:
 </ul
 
 </br>
+
+<h3>APIs</h3>
+<ul>
+    <li></li>
+</ul
 
 <h2><u>Base Objectives:</u></h2>
 <ul>
@@ -189,14 +190,12 @@ if (qBase.drinkTree < 1) {
 
 </br>
 
-<h2>Live Demo</h2>
-Do we want to do this?
-</br>
-
 <h2>Screenshots:</h2>
-<img src="" >
-<h4>Content</h4>
+<img src="images/Quiz.png" >
+<h4>Displays a subsection of the quiz menu.</h4>
 <br />
-<img src="" >
-<h4>Content</h4>
+<img src="images/AboutUsPic.png" >
+<h4>Displays our AboutUs page.</h4>
 <br />
+<img src="images/Cocktails.png" >
+<h4>Showcase of some of the cocktails provided by an API call.</h4>

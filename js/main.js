@@ -61,8 +61,6 @@ $(function() {
               })
               .then(() => {
                 let drinkslist = drinksforall.map(array => {
-                  //   let drinkMulti = array.strDrink.join("-");
-                  //   console.log(drinkMulti);
                   return `<div class="card" style="width: 18rem;"><img class="card-img-top align-middle" style="height: auto; width: 100%" src=${array.image_url}><div class="card-body align-middle"><p class="card-text">${array.tagline}</p></div></div>`;
                 });
                 console.log(drinkslist);
@@ -310,18 +308,17 @@ $(function() {
           });
       }
     } else {
-      // let qNum = $("#qid");
-      // qNum.text() = qNum.text().parseint() + 1;
-      // console.log(qNum.text);
       $("#heading").text(Qans["qs"]["heading"]);
+      // Changes the question for the next part of the quiz tree based on choice.
       let quiz = $("#quiz");
-      console.log(quiz);
+      // The quiz display is selected and emptied.
       quiz.empty();
-      console.log(Qans);
       if (Qans["name"] != "Aged") {
+        //Checks if the quiz questions being called are not the initial drink tree questions and appends the drink trees corresponding picture.
         quiz.append(`<img width="300px" src=${Qans["image"]}></img>`);
       }
       for (let i = 1; i <= Qans["qs"]["length"]; i++) {
+        //Appends the questions that are in the chosen drink tree based on how many questions there are.
         quiz.append(`<label
         id="q${i}"
         class="element-animation1 btn btn-lg btn-primary btn-block"
@@ -332,24 +329,27 @@ $(function() {
       >`);
       }
       if (qBase.drinkTree < 1) {
+        //Checks if there has been a drink tree chosen yet.
         $("label.btn").on("click", function() {
           var choice = $(this)
             .find("input:radio")
             .val();
-          console.log(choice);
           $("#loadbar").show();
           $("#quiz").fadeOut();
+          // Animation with a loading bar and hides the quiz while this occurs.
           setTimeout(function() {
             $("#answer").html($(this).checking(choice));
             $("#quiz").show();
             $("#loadbar").fadeOut();
-            /* something else */
           }, 1500);
           qBase.drinkTree = choice;
+          // Changes the drinkTree to what the quiz taker has chosen.
           $("#bg").attr("src", questions[qBase.drinkTree]["backgroundimage"]);
+          // Changes the background of the quiz based on the drinkTree chosen. I.e. beer, wine, or liquor.
           $("#credits").html(questions[qBase.drinkTree]["credits"]);
-          // $("#startcredits").html("");
+          //Photo credits.
           nextQ(questions[qBase.drinkTree]);
+          //Calls the next questions based on the drinkTree chosen.
         });
       } else {
         $("label.btn").on("click", function() {

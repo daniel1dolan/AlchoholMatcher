@@ -1,15 +1,8 @@
 # TomatoTeam Project
 
-#2 Drink/Food Delivery with Postmates API[Secondary]
-Under Construction - we hope to revisit this feature after we learn how to use Node.
-
 <h1>AlcoholFinder<h1>
 
-```
-Show Homepage
-```
-
-<img src="">
+<img src="images/ScreenShotHome.png">
 
 <h2><u>Overview:</u><h2>
 <h4>We have created a quiz to help pair users with alcohol that suits their tastes.
@@ -49,18 +42,29 @@ For beer and wine, the user is given the option of what type of food they want t
     <li>JavaScript</li>
 </ul>
 
+Other:
+
+<ul>
+    <li>Ajax</li>
+    <li>JSON</li>
+</ul>
+
 <h3>APIs</h3>
 <ul>
-    <li>[The CocktailDB API for Cocktails](https://www.thecocktaildb.com/)</li>
-    <li>[Spoonacular API for Wine Pairing](https://spoonacular.com/food-api)</li>
-    <li>[The PunkAPI for Beer](https://punkapi.com/)</li>
+    <li>The CocktailDB API for Cocktails - https://www.thecocktaildb.com/</li>
+    <li>Spoonacular API for Wine Pairing -https://spoonacular.com/food-api</li>
+    <li>The PunkAPI for Beer - https://punkapi.com/</li>
 </ul
 
 </br>
 
 <h2><u>Base Objectives:</u></h2>
 <ul>
-    <li>XXXXXXX</li>
+    <li>Ask the user which type of alcholic drink they would like: beer, wine, or cocktail. Then, they will answer one other question based on the alcoholic drink chosen to narrow down the results.</li>
+    <li>Have the corresponding API be called based on the choice. </li>
+    <li>Return the results to the page in the form of cards. </li>
+    <li>An about us page that links to our contact info. </li>
+    <li>Make the quiz responsive on smaller/mobile devices. </li>
    
 </ul>
 
@@ -68,13 +72,15 @@ For beer and wine, the user is given the option of what type of food they want t
 
 <h2><u>Flex Goals Completed:</u></h2>
 <ul>
-    <li>Stuff</li>
+    <li>Random choices: We added a feature that allows for a random choice in each alcohol type as well as a suprise me that will pick a random alcohol type as well. </li>
+    <li>Change the background with the corresponding alcohol type chosen. </li>
    
 </ul>
 
 <h2><u>Stretch Goals Future</u></h2>
 <ul>
-<li>Goals</li>
+<li>Drink/Food Delivery with Postmates API
+Under Construction - we hope to revisit this feature after we learn how to use Node. We ran into a problem while making this in making a request which required a back-end. A fetch request or using Postman would not allow us to dynamically send requests based on the users drink results. </li>
 </ul>
 
 </br>
@@ -82,17 +88,17 @@ For beer and wine, the user is given the option of what type of food they want t
 <h2><u>Challenges & Solutions:</u><h2>
 <h3>Some of the biggest challenges we faced with this project build included:</h2>
 
-<b>Challenge:</b>
+<b>Challenge: Making the quiz change dynamically while also keeping track of the user's choices.</b>
 <br>
-<b>Solution:</b>
+<b>Solution: We used a class object to keep track of the user's choices and ran a loop based on an array of questions to fill the quiz questions.</b>
 
-<b>Challenge:</b>
+<b>Challenge: Finding the right questions that would fit in with what the API provided.</b>
 <br>
-<b>Solution:</b>
+<b>Solution: We first looked at the documentation of each API before creating our quiz, and we found that type of liquor (vodka, gin, etc.) was best for the CocktailDB and food pairing worked best with the other APIs.</b>
 
-<b>Challenge:</b>
+<b>Challenge: The Spoonacular API did not have a random wine request option.</b>
 <br>
-<b>Solution:</b>
+<b>Solution: We created an array of common wine types and ran a random number generation each time to select a random wine from the array. Then, Spoonacular would provide a wine recommendation based on the type of wine.</b>
 
 </br>
 

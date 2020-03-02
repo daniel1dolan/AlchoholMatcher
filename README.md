@@ -54,12 +54,7 @@ Other:
 
 </br>
 
-<h3>APIs</h3>
-<ul>
-    <li></li>
-</ul
-
-<h2><u>Base Objectives:</u></h2>
+<h3><u>Base Objectives:</u></h3>
 <ul>
     <li>Ask the user which type of alcholic drink they would like: beer, wine, or cocktail. Then, they will answer one other question based on the alcoholic drink chosen to narrow down the results.</li>
     <li>Have the corresponding API be called based on the choice. </li>

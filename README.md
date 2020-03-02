@@ -25,7 +25,7 @@ For beer and wine, the user is given the option of what type of food they want t
 
 <h3>Diego Rivera</h3>
 
-<b>Primary team role:</b> API calls and HTML and CSS styling.
+<b>Primary team role:</b> API calls, HTML and CSS styling.
 </br>
 </br>
 </br>
